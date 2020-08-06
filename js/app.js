@@ -35,4 +35,4 @@ const getRandomPhraseAsArray = arr => {
     return phraseAsCharacters;
 };
 
-console.log(getRandomPhraseAsArray());
+console.log(getRandomPhraseAsArray(phrases));
