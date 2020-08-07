@@ -85,7 +85,7 @@ const checkLetter = playerGuess => {
 qwerty.addEventListener('click', (e) => {
     // save button choice to variable
     let buttonChoice = event.target;
-    // loop through buttons because querySelectorAll('button') creates list
+    // loop through buttons, querySelectorAll('button') creates list
     for (let i = 0; i < button.length; i++) {
         // if button choice equals one of the button options, change stlye of that button
         if (buttonChoice === button[i]) {
@@ -96,7 +96,7 @@ qwerty.addEventListener('click', (e) => {
     }
 
     // CALL THE CHECKLETTER FUNCTION **************************************************
-
+    const letterFound = checkLetter(buttonChoice);
     //  If the checkLetter function does not find a letter, remove one of the heart
     //  images and increment the missed counter
 
