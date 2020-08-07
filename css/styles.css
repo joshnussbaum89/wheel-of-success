@@ -43,6 +43,7 @@ h2 {
 }
 
 button {
+  cursor: pointer;
   margin: 6px;
   border: 1px solid transparent;
   padding: .5rem 1rem;
