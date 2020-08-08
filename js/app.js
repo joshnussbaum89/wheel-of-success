@@ -64,41 +64,35 @@ const addPhraseToDisplay = arr => {
 
 // check if player guess match any letters
 const checkLetter = playerGuess => {
-    let checkLetter = document.querySelector('ul .letter');
+    const phraseLetters = document.querySelectorAll('.letter');
     // loop over the letters and check if they match the letter in the button the player has chosen
-    for (let i = 0; i < checkLetter.length; i++) {
+    for (let i = 0; i < phraseLetters.length; i++) {
         // If there’s a match
-        if (playerGuess === checkLetter[i]) {
+        if (playerGuess === phraseLetters[i].textContent) {
             // add the “show” class to the list item containing that letter
-            // store the matching letter inside of a variable
-            let matchingLetter = checkLetter[i].classList.add('show');
-            // return that letter.
-            return matchingLetter;
-            // If a match wasn’t found, return null.
-        } else if (playerGuess !== checkLetter[i]) {
-            return null;
+            phraseLetters[i].classList.add('show');
         }
     }
 };
-
 // click a letter, change slyle of selected button
 qwerty.addEventListener('click', (e) => {
+    checkLetter(e.target.textContent);
     // save button choice to variable
-    let buttonChoice = event.target;
+    const buttonChoice = document.querySelectorAll('button');
     // loop through buttons, querySelectorAll('button') creates list
-    for (let i = 0; i < button.length; i++) {
+    for (let i = 0; i < buttonChoice.length; i++) {
         // if button choice equals one of the button options, change stlye of that button
-        if (buttonChoice === button[i]) {
-            buttonChoice.classList.add('chosen');
+        if (e.target === buttonChoice[i]) {
+            e.target.classList.add('chosen');
             // disable that button
-            buttonChoice.disabled = true; // adds a glitch to the button transition...?
+            e.target.disabled = true; // adds a glitch to the button transition...?
         }
     }
 
-    // CALL THE CHECKLETTER FUNCTION **************************************************
-    const letterFound = checkLetter(buttonChoice);
-    //  If the checkLetter function does not find a letter, remove one of the heart
-    //  images and increment the missed counter
+    /* 
+    If the checkLetter function does not find a letter, remove one of the heart
+    images and increment the missed counter
+    */
 
 });
 
