@@ -4,6 +4,7 @@ const qwerty = document.getElementById('qwerty');
 const phrase = document.getElementById('phrase');
 const startGameButton = document.querySelector('.btn__reset');
 const button = document.querySelectorAll('button');
+const tries = document.querySelectorAll('.tries');
 let missed = 0;
 
 // remove start screen overlay with start game button
@@ -73,10 +74,11 @@ const checkLetter = playerGuess => {
             phraseLetters[i].classList.add('show');
         }
     }
+    return playerGuess;
 };
+
 // click a letter, change slyle of selected button
 qwerty.addEventListener('click', (e) => {
-    checkLetter(e.target.textContent);
     // save button choice to variable
     const buttonChoice = document.querySelectorAll('button');
     // loop through buttons, querySelectorAll('button') creates list
@@ -88,12 +90,14 @@ qwerty.addEventListener('click', (e) => {
             e.target.disabled = true; // adds a glitch to the button transition...?
         }
     }
+    const letterFound = checkLetter(e.target.textContent);
+    console.log(letterFound);
 
-    /* 
-    If the checkLetter function does not find a letter, remove one of the heart
-    images and increment the missed counter
-    */
-
+    if (!phraseArray.includes(letterFound)) {
+        missed++;
+        // tries.remove();
+    }
+    console.log(missed);
 });
 
 addPhraseToDisplay(phraseArray);
