@@ -98,6 +98,10 @@ button {
   background-color: #76CE82;
 }
 
+.remove {
+  display: none;
+}
+
 /* Keyboard */
 
 .keyrow {

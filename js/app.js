@@ -4,7 +4,7 @@ const qwerty = document.getElementById('qwerty');
 const phrase = document.getElementById('phrase');
 const startGameButton = document.querySelector('.btn__reset');
 const button = document.querySelectorAll('button');
-const tries = document.querySelectorAll('.tries');
+//only returns first
 let missed = 0;
 
 // remove start screen overlay with start game button
@@ -94,8 +94,10 @@ qwerty.addEventListener('click', (e) => {
     console.log(letterFound);
 
     if (!phraseArray.includes(letterFound)) {
+        let ol = document.getElementsByTagName('ol');
+        let removeLastTry = document.querySelector('li:last-child');
+        ol.removeChild(removeLastTry);
         missed++;
-        // tries.remove();
     }
     console.log(missed);
 });
