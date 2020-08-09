@@ -1,16 +1,9 @@
-
 // global variables
 const qwerty = document.getElementById('qwerty');
-const phrase = document.getElementById('phrase');
+// const phrase = document.getElementById('phrase');
 const startGameButton = document.querySelector('.btn__reset');
-const button = document.querySelectorAll('button');
-//only returns first
+// const button = document.querySelectorAll('button');
 let missed = 0;
-
-// remove start screen overlay with start game button
-startGameButton.addEventListener('click', () => {
-    document.querySelector('#overlay').style.display = 'none';
-});
 
 // movie quote array 
 const phrases = [
@@ -77,29 +70,48 @@ const checkLetter = playerGuess => {
     return playerGuess;
 };
 
+// Check if player wins/loses
+const checkWin = () => {
+    const letterLI = document.querySelectorAll('.letter');
+    const showLI = document.querySelectorAll('.show');
+    const overlay = document.querySelector('#overlay');
+
+    if (letterLI.length === showLI.length) {
+        overlay.classList.add('win');
+        overlay.innerHTML = `<h2>You Won 😎</h2><button class="refresh-win" onClick="window.location.reload();">Try again?</button>`;
+        overlay.style.display = 'flex';
+    } else if (missed > 4) {
+        overlay.classList.add('lose');
+        overlay.innerHTML = `<h2>You Lost 🥺</h2><button class="refresh-lose" onClick="window.location.reload();">Try again?</button>`;
+        overlay.style.display = 'flex';
+    }
+};
+
+// remove start screen overlay with start game button
+startGameButton.addEventListener('click', () => {
+    document.querySelector('#overlay').style.display = 'none';
+});
+
 // click a letter, change slyle of selected button
 qwerty.addEventListener('click', (e) => {
-    // save button choice to variable
+
     const buttonChoice = document.querySelectorAll('button');
-    // loop through buttons, querySelectorAll('button') creates list
     for (let i = 0; i < buttonChoice.length; i++) {
         // if button choice equals one of the button options, change stlye of that button
         if (e.target === buttonChoice[i]) {
             e.target.classList.add('chosen');
-            // disable that button
-            e.target.disabled = true; // adds a glitch to the button transition...?
+            e.target.disabled = true;
         }
     }
     const letterFound = checkLetter(e.target.textContent);
-    console.log(letterFound);
 
+    // if player guess is not included in phrase
     if (!phraseArray.includes(letterFound)) {
-        let ol = document.getElementsByTagName('ol');
-        let removeLastTry = document.querySelector('li:last-child');
-        ol.removeChild(removeLastTry);
+        let ol = document.querySelector('ol');
+        ol.removeChild(ol.lastElementChild);
         missed++;
     }
-    console.log(missed);
+    checkWin();
 });
 
 addPhraseToDisplay(phraseArray);
