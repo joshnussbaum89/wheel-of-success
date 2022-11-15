@@ -2,17 +2,17 @@
 
 :root {
   --color-win: #00ffff;
-  --color-lose: #BF5452;;
+  --color-lose: #bf5452;
   --color-start: #010165;
   --color-header: #3f8abf;
-  --color-neutral: #1A4E73;
-  --color-neutral-light: #D2D2D2;
-  --color-keys: #37474F;
-  --color-keys-light: #E5E5E5;
-  --color-hover-grey: #D3D3D3;
+  --color-neutral: #1a4e73;
+  --color-neutral-light: #d2d2d2;
+  --color-keys: #37474f;
+  --color-keys-light: #e5e5e5;
+  --color-hover-grey: #d3d3d3;
   --font-size-large: 60px;
   --font-size-medium: 20px;
-  --transition: all .2s ease-in-out;
+  --transition: all 0.2s ease-in-out;
 }
 
 /* main */
@@ -23,13 +23,15 @@
 }
 
 body {
-  justify-content: space-evenly;
-  flex-direction: column;
-  display: flex;
   height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
 }
 
-li, ol, ul {
+li,
+ol,
+ul {
   padding: 0;
   display: inline-block;
 }
@@ -42,17 +44,23 @@ h2 {
 }
 
 button {
-  cursor: pointer;
   margin: 6px;
-  border: 1px solid transparent;
-  padding: .5rem 1rem;
-  color: var(--color-keys);
+  padding: 0.25rem 0.5rem;
   font-size: var(--font-size-medium);
+  color: var(--color-keys);
   background-color: var(--color-keys-light);
+  border: 1px solid transparent;
   border-radius: 5px;
   -webkit-transition: var(--transition);
   -o-transition: var(--transition);
   transition: var(--transition);
+  cursor: pointer;
+}
+
+@media (min-width: 768px) {
+  button {
+    padding: 0.5rem 1rem;
+  }
 }
 
 button:hover {
@@ -70,6 +78,8 @@ button:hover {
 
 .section {
   width: 100%;
+  max-width: 950px;
+  margin: auto;
   padding: 10px;
 }
 
@@ -82,11 +92,11 @@ button:hover {
 /* Phrase */
 
 .letter {
-  font-size: var(--font-size-medium);
-  height: 65px;
-  width: 65px;
-  padding: 20px 1px 0 1px;
+  min-width: 55px;
   margin-right: 2px;
+  margin-bottom: 2px;
+  padding: 16px;
+  font-size: var(--font-size-medium);
   color: transparent;
   background: var(--color-neutral-light);
   border-radius: 5px;
@@ -97,7 +107,7 @@ button:hover {
 }
 
 .show {
-  color: #FFF;
+  color: #fff;
   background-color: var(--color-lose);
   transition: 1s;
 }
@@ -107,66 +117,67 @@ button:hover {
 .keyrow {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
 }
 
 .chosen {
+  font-size: var(--font-size-medium);
+  color: #fff;
   background: var(--color-neutral);
   border-radius: 5px;
-  font-size: var(--font-size-medium);
-  color: #FFF;
 }
 
 .btn__reset {
   padding: 8px;
   margin: 50px auto;
-  background: #FFF;
   outline: none;
-  border-radius: 5px;
   font-size: var(--font-size-medium);
+  background: #fff;
+  border-radius: 5px;
   cursor: pointer;
 }
 
 .refresh-win {
-  padding: 8px;
   margin: 50px auto;
-  color: var(--color-start);
-  background: #FFF;
-  border-radius: 5px;
+  padding: 8px;
   font-size: var(--font-size-medium);
+  color: var(--color-start);
+  background: #fff;
+  border-radius: 5px;
   cursor: pointer;
 }
 
 .refresh-win:hover {
-  box-shadow: none;
+  color: #fff;
   background-color: var(--color-start);
-  color: #FFF;
-  border: 1px solid #FFF;
+  box-shadow: none;
+  border: 1px solid #fff;
 }
 
 .refresh-lose {
-  padding: 8px;
   margin: 50px auto;
-  color: var(--color-start);
-  background: #FFF;
-  border-radius: 5px;
+  padding: 8px;
   font-size: var(--font-size-medium);
+  color: var(--color-start);
+  background: #fff;
+  border-radius: 5px;
   cursor: pointer;
 }
 
 .refresh-lose:hover {
-  box-shadow: none;
+  color: #fff;
   background-color: var(--color-start);
-  color: #FFF;
-  border: 1px solid #FFF;
+  box-shadow: none;
+  border: 1px solid #fff;
 }
 
 /* Overlay */
 
 #overlay {
+  position: fixed;
   display: flex;
   flex-direction: column;
-  position: fixed;
-  color: #FFF;
+  color: #fff;
   justify-content: center;
   top: 0;
   bottom: 0;
@@ -176,7 +187,7 @@ button:hover {
 }
 
 .title {
-  color: #FFF;
+  color: #fff;
 }
 
 .start {
@@ -191,10 +202,10 @@ button:hover {
 }
 
 .start .btn__reset:hover {
-  box-shadow: none;
+  color: #fff;
   background-color: var(--color-start);
-  color: #FFF;
-  border: 1px solid #FFF;
+  box-shadow: none;
+  border: 1px solid #fff;
 }
 
 .win {
